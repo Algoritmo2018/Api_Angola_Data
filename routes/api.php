@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\MunicipalityController;
 use App\Http\Controllers\Api\ProvinceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,3 +18,9 @@ Route::get('/user', function (Request $request) {
 // Route::get('/province/deleted_at', [ProvinceController::class, 'show_deleted'])->name('province.show_deleted');
 // Route::get('/province/all/schools', [ProvinceController::class, 'index2'])->name('province.index2');
 // Route::delete('/province/{id}', [ProvinceController::class, 'destroy'])->name('province.destroy');
+
+
+//Routes Municipality
+Route::post('/municipality', [MunicipalityController::class, 'store'])->name('municipality.store');
+Route::get('/municipality', [MunicipalityController::class, 'index'])->name('municipality.index');
+ Route::put('/municipality/{id}', [MunicipalityController::class, 'update'])->name('municipality.update');

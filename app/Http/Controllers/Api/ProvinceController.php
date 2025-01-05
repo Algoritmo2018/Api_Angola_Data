@@ -10,10 +10,8 @@ use App\DTOs\Province\CreateProvinceDTO;
 use App\DTOs\Province\UpdateProvinceDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Province\StoreProvinceRequest;
-use App\Http\Requests\Province\UpdateProvinceRequest;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\ProvinceResource; 
-use App\Models\Province;
+use App\Http\Requests\Province\UpdateProvinceRequest; 
+use App\Http\Resources\ProvinceResource;  
 
 class ProvinceController extends Controller
 {
@@ -81,7 +79,7 @@ class ProvinceController extends Controller
     {
 
         if (!$this->service->findOne($id)) {
-            return response()->json(['status' => 'error','message' => 'Province not found'], Response::HTTP_NOT_FOUND);
+            return response()->json(['success' => false,'message' => 'Province not found'], Response::HTTP_NOT_FOUND);
         }
 
         $this->service->delete($id);

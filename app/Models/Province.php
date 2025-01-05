@@ -12,4 +12,8 @@ class Province extends Model
     protected $fillable = [
         'name',
     ];
+    public function municipalities()
+    {
+        return $this->hasMany(Municipality::class);
+    }
 }
