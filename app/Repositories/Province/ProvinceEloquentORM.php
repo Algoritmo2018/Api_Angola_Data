@@ -32,23 +32,7 @@ class ProvinceEloquentORM implements ProvinceRepositoryInterface
 
         return new PaginationPresenter($result);
     }
-    public function paginate2(int $page = 1, int $totalPerPage = 15, string $filter = null, string $filter2 = null): PaginationInterface
-    {
-
-        $result = $this->model
-            ->where(function ($query) use ($filter,$filter2) {
-                if ($filter) {
-                    $query->where('id', $filter);
-                                   } if ($filter2) {
-                                    $query->where('name', $filter2);
-                                }
-            })
  
-            ->orderBy('id', 'desc')
-            ->paginate($totalPerPage, ['*'], 'page', $page);
-
-        return new PaginationPresenter($result);
-    }
     public function getAll(string $filter = null): array
     {
 

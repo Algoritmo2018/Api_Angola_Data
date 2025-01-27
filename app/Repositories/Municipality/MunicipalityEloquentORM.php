@@ -2,12 +2,12 @@
 
 namespace App\Repositories\Municipality;
 
-use stdClass; 
+use stdClass;
 use App\DTOs\Municipality\CreateMunicipalityDTO;
 use App\DTOs\Municipality\UpdateMunicipalityDTO;
-use App\Models\Municipality; 
+use App\Models\Municipality;
 use App\Repositories\PaginationInterface;
-use App\Repositories\PaginationPresenter; 
+use App\Repositories\PaginationPresenter;
 
 class MunicipalityEloquentORM implements MunicipalityRepositoryInterface
 {
@@ -16,38 +16,22 @@ class MunicipalityEloquentORM implements MunicipalityRepositoryInterface
     ) {}
 
     public function paginate(int $page = 1, int $totalPerPage = 15, string $filter = null): PaginationInterface
-    { 
-        $result = $this->model 
+    {
+        $result = $this->model
             ->where(function ($query) use ($filter) {
                 if ($filter) {
                     $query
                         ->where('name', 'like', "%{$filter}%")
-                        ->orWhere('id', $filter); 
+                        ->orWhere('id', $filter);
                 }
             })
- ->with('province')
+            ->with('province')
             ->orderBy('id', 'desc')
             ->paginate($totalPerPage, ['*'], 'page', $page);
 
         return new PaginationPresenter($result);
     }
-    public function paginate2(int $page = 1, int $totalPerPage = 15, string $filter = null, string $filter2 = null): PaginationInterface
-    {
-
-        $result = $this->model
-            ->where(function ($query) use ($filter,$filter2) {
-                if ($filter) {
-                    $query->where('id', $filter);
-                                   } if ($filter2) {
-                                    $query->where('name', $filter2);
-                                }
-            })
  
-            ->orderBy('id', 'desc')
-            ->paginate($totalPerPage, ['*'], 'page', $page);
-
-        return new PaginationPresenter($result);
-    }
     public function getAll(string $filter = null): array
     {
 
@@ -99,8 +83,8 @@ class MunicipalityEloquentORM implements MunicipalityRepositoryInterface
         $RestoreDeleted->restore();
     }
     public function new(CreateMunicipalityDTO $dto): stdClass
-    { 
-       
+    {
+
         $Municipality = $this->model->create(
             (array) $dto
         );
@@ -123,7 +107,7 @@ class MunicipalityEloquentORM implements MunicipalityRepositoryInterface
                 'province_id' => $dto['province_id']
             ])->save();
         }
-   
+
         return (object) $Municipality->toArray();
     }
 }

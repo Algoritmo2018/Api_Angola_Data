@@ -23,7 +23,7 @@ class ComuneController extends Controller
     ) {}
 
     /**
-     * Lista os cursos de uma determinada escola
+     * Lista as comunas
      */
     public function index(Request $request)
     {
@@ -35,18 +35,7 @@ class ComuneController extends Controller
 
         return  ApiAdapter::toJson($Comunes);
     }
-    //Lista os cursos de todas as escolas
-    public function index2(Request $request)
-    {
-        $Comunes = $this->service->paginate2(
-            page: $request->get('page', 1),
-            totalPerPage: $request->get('per_page', 15),
-            filter: $request->filter,
-            filter2: $request->filter2
-        );
-
-        return  ApiAdapter::toJson($Comunes);
-    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -89,7 +78,7 @@ class ComuneController extends Controller
         return response()->json([], Response::HTTP_NO_CONTENT);
     }
 
-    //Traz todos os cursos que estão deletados
+    //Traz todos as comunas que estão deletadas
     public function show_deleted(Request $request)
     {
 
@@ -101,14 +90,14 @@ class ComuneController extends Controller
 
         return  ApiAdapter::toJson($Comunes);
     }
-    //Restaura todos os cursos deletados com o soft delete
+    //Restaura todos as comunas deletadas com o soft delete
     public function restore_all()
     {
         $this->service->restore_all();
         return response()->json([], Response::HTTP_NO_CONTENT);
     }
 
-    //Restaura todos os cursos deletados com o soft delete
+    //Restaura todos as comunas deletadas com o soft delete
     public function restore_one(int $id)
     {
         $this->service->restore_one($id);
