@@ -72,7 +72,13 @@ php artisan key:generate
 php artisan migrate
 ```
 
-### 7. Rodar a aplicação localmente
+### 7. Rodar os seeders
+
+```sh
+php artisan db:seed
+```
+
+### 8. Rodar a aplicação localmente
 
 ```sh
 php artisan serve
