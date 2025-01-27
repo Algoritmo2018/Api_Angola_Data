@@ -25,6 +25,10 @@ Route::put('/province/{id}', [ProvinceController::class, 'update'])->name('provi
 Route::post('/municipality', [MunicipalityController::class, 'store'])->name('municipality.store');
 Route::get('/municipality', [MunicipalityController::class, 'index'])->name('municipality.index');
 Route::put('/municipality/{id}', [MunicipalityController::class, 'update'])->name('municipality.update');
+Route::delete('/municipality/{id}', [MunicipalityController::class, 'destroy'])->name('municipality.destroy');
+Route::get('/municipality/show/deleted', [MunicipalityController::class, 'show_deleted'])->name('municipality.show_deleted');
+Route::get('/municipality/restore_one/{id}', [MunicipalityController::class, 'restore_one'])->name('municipality.restore_one');
+Route::get('/municipality/restore_all', [MunicipalityController::class, 'restore_all'])->name('municipality.restore_all');
 
 //Routes Comune
 Route::post('/comune', [ComuneController::class, 'store'])->name('comune.store');

@@ -68,6 +68,7 @@ class MunicipalityEloquentORM implements MunicipalityRepositoryInterface
                 }
             })
             ->onlyTrashed()
+            ->with('province')
             ->orderBy('id', 'desc')
             ->paginate($totalPerPage, ['*'], 'page', $page);
 

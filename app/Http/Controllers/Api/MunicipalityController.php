@@ -91,7 +91,7 @@ class MunicipalityController extends Controller
     public function restore_all()
     {
         $this->service->restore_all();
-        return response()->json([], Response::HTTP_NO_CONTENT);
+        return response()->json([], 200);
     }
 
     //Restaura todos todos os municipios deletados com o soft delete
@@ -99,7 +99,7 @@ class MunicipalityController extends Controller
     {
         $this->service->restore_one($id);
 
-        return response()->json([], Response::HTTP_NO_CONTENT);
+        return response()->json([], 200);
     }
 }
 
