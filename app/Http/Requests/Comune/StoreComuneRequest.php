@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Municipality;
+namespace App\Http\Requests\Comune;
 
-use App\Models\Province;
+use App\Models\Municipality;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateMunicipalityRequest extends FormRequest
+class StoreComuneRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,26 +24,28 @@ class UpdateMunicipalityRequest extends FormRequest
     {
         return [
             'name' => [
+                'required',
                 'string',
                 'min:1',
                 'max:255',
-                'unique:municipalities',
-            ],
-            'province_id' => [
+                'unique:comunes',
+            ], 
+               'municipality_id' => [
+                'required',
                 'numeric',
-                'min:1' 
+                'min:1', 
             ],
         ];
     }
     public function withValidator($validator)
-    {
+    { 
         $validator->after(function ($validator) {
             // Verificando se a provincia selecionada existe
-            $provinceExists = Province::where('id', $this->province_id)->exists();
+            $municipalityExists = Municipality::where('id', $this->municipality_id)->exists();
 
-            if (!$provinceExists && !empty($this->province_id)) {
-                $validator->errors()->add($this->province_id, 'A provincia selecionada não existe');
+            if (!$municipalityExists) {
+                $validator->errors()->add($this->municipality_id, 'O municipio selecioinado não existe');
             }
-        });
+        });     
     }
 }

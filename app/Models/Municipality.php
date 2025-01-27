@@ -18,4 +18,9 @@ class Municipality extends Model
     {
         return $this->belongsTo(Province::class, 'province_id');
     }
+    
+    public function comunes()
+    {
+        return $this->hasMany(Comune::class);
+    }
 }

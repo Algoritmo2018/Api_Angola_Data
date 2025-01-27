@@ -7,6 +7,8 @@ use App\Repositories\Municipality\MunicipalityRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Province\ProvinceEloquentORM;
 use App\Repositories\Province\ProvinceRepositoryInterface;
+use App\Repositories\Comune\ComuneEloquentORM;
+use App\Repositories\Comune\ComuneRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
              $this->app->bind(
                       MunicipalityRepositoryInterface::class, MunicipalityEloquentORM::class
                   );
+                  $this->app->bind(
+                           ComuneRepositoryInterface::class, ComuneEloquentORM::class
+                       );
     }
 
     /**
