@@ -67,6 +67,7 @@ class ComuneEloquentORM implements ComuneRepositoryInterface
                 }
             })
             ->onlyTrashed()
+            ->with('municipality','municipality.province')
             ->orderBy('id', 'desc')
             ->paginate($totalPerPage, ['*'], 'page', $page);
 

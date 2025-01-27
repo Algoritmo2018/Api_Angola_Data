@@ -30,3 +30,7 @@ Route::put('/municipality/{id}', [MunicipalityController::class, 'update'])->nam
 Route::post('/comune', [ComuneController::class, 'store'])->name('comune.store');
 Route::get('/comune', [ComuneController::class, 'index'])->name('comune.index');
 Route::put('/comune/{id}', [ComuneController::class, 'update'])->name('comune.update');
+Route::delete('/comune/{id}', [ComuneController::class, 'destroy'])->name('comune.destroy');
+Route::get('/comune/show/deleted', [ComuneController::class, 'show_deleted'])->name('comune.show_deleted');
+Route::get('/comune/restore_one/{id}', [ComuneController::class, 'restore_one'])->name('comune.restore_one');
+Route::get('/comune/restore_all', [ComuneController::class, 'restore_all'])->name('comune.restore_all');

@@ -73,9 +73,9 @@ class ComuneController extends Controller
             return response()->json(['success' => false,'message' => 'Comune not found'], Response::HTTP_NOT_FOUND);
         }
 
-        $this->service->delete($id);
+       $comune = $this->service->delete($id);
 
-        return response()->json([], Response::HTTP_NO_CONTENT);
+        return response()->json(["success"=> true,"data" => $comune], Response::HTTP_NO_CONTENT);
     }
 
     //Traz todos as comunas que estão deletadas
@@ -93,16 +93,16 @@ class ComuneController extends Controller
     //Restaura todos as comunas deletadas com o soft delete
     public function restore_all()
     {
-        $this->service->restore_all();
-        return response()->json([], Response::HTTP_NO_CONTENT);
+        $comune = $this->service->restore_all();
+        return response()->json(["success"=> true,"data"=>$comune],200);
     }
 
     //Restaura todos as comunas deletadas com o soft delete
     public function restore_one(int $id)
     {
-        $this->service->restore_one($id);
+       $comune = $this->service->restore_one($id);
 
-        return response()->json([], Response::HTTP_NO_CONTENT);
+        return response()->json(["success"=> true,"data"=>$comune],200);
     }
 }
 
