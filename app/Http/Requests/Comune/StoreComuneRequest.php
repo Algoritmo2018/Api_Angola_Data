@@ -29,23 +29,23 @@ class StoreComuneRequest extends FormRequest
                 'min:1',
                 'max:255',
                 'unique:comunes',
-            ], 
-               'municipality_id' => [
+            ],
+            'municipality_id' => [
                 'required',
                 'numeric',
-                'min:1', 
+                'min:1',
             ],
         ];
     }
     public function withValidator($validator)
-    { 
+    {
         $validator->after(function ($validator) {
-            // Verificando se a provincia selecionada existe
+               // Verificando se o municipio selecionado existe
             $municipalityExists = Municipality::where('id', $this->municipality_id)->exists();
 
             if (!$municipalityExists) {
                 $validator->errors()->add($this->municipality_id, 'O municipio selecioinado não existe');
             }
-        });     
+        });
     }
 }

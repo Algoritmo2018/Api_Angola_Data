@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Comune;
 
+use App\Models\Municipality;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateComuneRequest extends FormRequest
@@ -22,7 +23,27 @@ class UpdateComuneRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => [
+                'string',
+                'min:1',
+                'max:255',
+                'unique:municipalities',
+            ],
+            'municipality_id' => [
+                'numeric',
+                'min:1'
+            ],
         ];
+    }
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            // Verificando se o municipio selecionado existe
+            $municipalityExists = Municipality::where('id', $this->municipality_id)->exists();
+
+            if (!$municipalityExists && !empty($this->municipality_id)) {
+                $validator->errors()->add($this->municipality_id, 'O municipio selecionado não existe');
+            }
+        });
     }
 }

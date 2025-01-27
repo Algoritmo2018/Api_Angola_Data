@@ -21,7 +21,7 @@ class ProvinceController extends Controller
     ) {}
 
     /**
-     * Lista os cursos de uma determinada escola
+     * Lista as provincias de Angola 
      */
     public function index(Request $request)
     {
@@ -32,19 +32,7 @@ class ProvinceController extends Controller
         );
 
         return  ApiAdapter::toJson($Provinces);
-    }
-    //Lista os cursos de todas as escolas
-    public function index2(Request $request)
-    {
-        $Provinces = $this->service->paginate2(
-            page: $request->get('page', 1),
-            totalPerPage: $request->get('per_page', 15),
-            filter: $request->filter,
-            filter2: $request->filter2
-        );
-
-        return  ApiAdapter::toJson($Provinces);
-    }
+    } 
 
     /**
      * Store a newly created resource in storage.
@@ -87,7 +75,7 @@ class ProvinceController extends Controller
         return response()->json([], Response::HTTP_NO_CONTENT);
     }
 
-    //Traz todos os cursos que estão deletados
+    //Traz todos as provincias que estão deletados
     public function show_deleted(Request $request)
     {
 
@@ -99,18 +87,18 @@ class ProvinceController extends Controller
 
         return  ApiAdapter::toJson($Provinces);
     }
-    //Restaura todos os cursos deletados com o soft delete
+    //Restaura todos as provincias deletados com o soft delete
     public function restore_all()
     {
         $this->service->restore_all();
-        return response()->json([], Response::HTTP_NO_CONTENT);
+        return response()->json([], 200);
     }
 
-    //Restaura todos os cursos deletados com o soft delete
+    //Restaura todos as provincias deletados com o soft delete
     public function restore_one(int $id)
     {
         $this->service->restore_one($id);
 
-        return response()->json([], Response::HTTP_NO_CONTENT);
+        return response()->json([], 200);
     }
 }

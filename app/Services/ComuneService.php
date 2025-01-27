@@ -22,17 +22,7 @@ class ComuneService
             totalPerPage: $totalPerPage,
             filter: $filter,
         );
-    }
-    public function paginate2(int $page = 1, int $totalPerPage = 15, string $filter = null, string $filter2 = null)
-    {
-        return $this->repository->paginate2(
-            page: $page,
-            totalPerPage: $totalPerPage,
-            filter: $filter,
-            filter2: $filter2,
-        );
-    }
-
+    } 
     public function getAll(string $filter = null): array
     {
         return $this->repository->getAll($filter);
