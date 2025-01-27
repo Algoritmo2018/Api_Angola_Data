@@ -79,7 +79,6 @@ php artisan serve
 ```
 
 ## Documentação da Api Angola Data
-
-```sh
+ 
 [Acessar doc](https://documenter.getpostman.com/view/32762646/2sAYQgi8k6)
-```
+ 
