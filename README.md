@@ -9,17 +9,17 @@ Este documento fornece instruções detalhadas sobre como configurar e executar 
 
 Antes de começar, certifique-se de ter os seguintes programas instalados em sua máquina:
 
- - [Git] (https://git-scm.com/)
- - [PHP] (https://www.php.net/)
- - [Composer] (https://getcomposer.org/)
- - [Laravel] (https://laravel.com/docs/11.x/installation/git-scm.com/)
+ - [Git](https://git-scm.com/)
+ - [PHP](https://www.php.net/)
+ - [Composer](https://getcomposer.org/)
+ - [Laravel](https://laravel.com/docs/11.x/installation/git-scm.com/)
 
 ## Tecnologias envolvidas 
 
- - [Git] (https://git-scm.com/)
- - [PHP] (https://www.php.net/)
- - [Composer] (https://getcomposer.org/)
- - [Laravel] (https://laravel.com/docs/11.x/installation/git-scm.com/)
+ - [Git](https://git-scm.com/)
+ - [PHP](https://www.php.net/)
+ - [Composer](https://getcomposer.org/)
+ - [Laravel](https://laravel.com/docs/11.x/installation/git-scm.com/)
 
 ## Passos para Rodar a Aplicação
 
@@ -80,6 +80,5 @@ php artisan serve
 
 ## Documentação da Api Angola Data
 
-```sh
-[Acessar] (https://documenter.getpostman.com/view/32762646/2sAYQgi8k6)
-```
+[Acessar doc](https://documenter.getpostman.com/view/32762646/2sAYQgi8k6)
+ 
