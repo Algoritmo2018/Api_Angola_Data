@@ -91,7 +91,7 @@ class ProvinceController extends Controller
     public function restore_all()
     {
         $this->service->restore_all();
-        return response()->json([], Response::HTTP_NO_CONTENT);
+        return response()->json([], 200);
     }
 
     //Restaura todos as provincias deletados com o soft delete
@@ -99,6 +99,6 @@ class ProvinceController extends Controller
     {
         $this->service->restore_one($id);
 
-        return response()->json([], Response::HTTP_NO_CONTENT);
+        return response()->json([], 200);
     }
 }
